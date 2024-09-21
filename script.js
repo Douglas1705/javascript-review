@@ -143,3 +143,68 @@ const data = [
     return data.find((d) => d.id === id);
   }
   
+  //function uses the id to search for values ​​and modify code items
+  const book = getBook(2);
+
+  //destrutucring
+  //removes the values ​​from the object
+  const {title, author, pages, publicationDate, genres} = book;
+
+  //three dots is used to cycle through the object
+  const [...secondaryGenre] = genres
+  console.log(title, secondaryGenre)
+
+  //spreed
+  const newGenres = [...genres, "Epic Fantasy"]
+  newGenres;
+
+  //Update 
+  const updateBook = {
+    ...book,
+    moviePublicationDate: '21/09/2024',
+    pages: 1000
+  }
+  updateBook;
+
+  console.log(updateBook)
+
+  //ternary operator
+  const pagesRange = pages > 1000 ? "over a thousand" : "less than 1000"
+  pagesRange;
+
+  //Map
+  const books = getBooks();
+  const titles = books.map(el => el.title)
+  titles;
+
+  //filter
+  const longBooks = books
+  .filter((book) => book.pages > 500)
+  .filter((book) => book.hasMovieAdaptation)
+  longBooks;
+
+  //reduce
+  const pagesAllBook = books.reduce((acc, book) => acc + book.pages, 0)
+  pagesAllBook;
+
+  //sort
+  const arr = [5,3,57,7,1]
+  const sorted = arr.sort((a, b) => a - b)
+  sorted;
+  
+  //put the titles in ascending order
+  const orderTitle = books.sort((a, b) => a.title.localeCompare(b.title));
+  orderTitle;
+
+  //asynchronous functions
+
+  async function getTodos(){
+    const res = await fetch("https://jsonplaceholder.typicode.com/todos")
+    const data = await res.json();
+    console.log(data)
+
+    return data;
+  }
+
+  const todos = getTodos()
+  todos;
